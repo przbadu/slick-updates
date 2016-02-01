@@ -1,7 +1,7 @@
 class QuestionsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_update_form
-  before_action :set_question, only: [:destroy]
+  before_action :set_question, only: [:edit, :update, :destroy]
 
   def index
   end
@@ -14,6 +14,19 @@ class QuestionsController < ApplicationController
         "update_form_#{@update_form.id}_questions", { html: render(@question) }
 
       head :created
+    end
+  end
+
+  def edit; end
+
+  def update
+    @question.update(create_params)
+
+    if request.xhr?
+      ActionCable.server.broadcast \
+        "update_form_update_#{@update_form.id}_questions", { html: render(@question) }
+
+      head :updated
     end
   end
 

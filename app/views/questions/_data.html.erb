@@ -1,0 +1,8 @@
+<div class='actions pull-right'>
+  <%= link_to icon('pencil fa-2x'), edit_update_form_question_path(@update_form, question), remote: true %>
+  <%= link_to icon('trash-o fa-2x'), [@update_form, question], method: :delete, remote: true %>
+  <%= link_to icon('arrow-up fa-2x'), '#', class: 'move-up' %>
+  <%= link_to icon('arrow-down fa-2x'), '#', class: 'move-down' %>
+</div>
+<div class='question-text'><%= question.text %></div>
+<br/>

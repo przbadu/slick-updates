@@ -1,0 +1,9 @@
+<%= form_for [@update_form, question], remote: true, method: :put,
+html: { class: 'edit_question form-inline' } do |f| %>
+  <div class="form-group">
+    <%= f.label :text, class: 'control-label' %>
+    <%= f.text_field :text, class: 'form-control', autocomplete: 'off' %>
+  </div>
+  <%= f.submit class: 'btn btn-primary' %>
+  <%#= link_to 'Cancel', '#', class: 'btn btn-danger' %>
+<% end %>
