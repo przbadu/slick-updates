@@ -21,3 +21,8 @@ $(document).on 'click', '#cancel-update', (e)->
   id      = $(this).data('id')
   old_txt = $(this).data('old-text')
   $("#question_#{id}").find('.question-text').html(old_txt)
+
+# press ESC to skip update
+$(document).on 'keyup', (e)->
+  if e.keyCode is 27 # esc key
+    $('#cancel-update').click()
