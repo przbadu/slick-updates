@@ -17,7 +17,6 @@ $ ->
         @swap(this_id, target_id)
 
     received: (data) ->
-      console.log(data)
       if data.destroyed
         $('#questions').find("#question_#{data.id}").remove()
       else if data.question_updated
