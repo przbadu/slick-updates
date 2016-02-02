@@ -16,9 +16,11 @@ RSpec.describe QuestionsController, type: :controller do
   describe "GET edit" do
     it "should render js" do
       controller.sign_in user
-      xhr :get, 'edit', params: { update_form_id: update_form.id, id: question.id }
+      get :edit,
+          params: { update_form_id: update_form.id, id: question.id },
+          xhr: true
 
-      expect(response.content_type).to eq Mime::JS
+      expect(response.content_type).to eq Mime[:js]
     end
   end
 
@@ -31,9 +33,11 @@ RSpec.describe QuestionsController, type: :controller do
 
       it "should update question" do
         put :update,
-            update_form_id: update_form.id,
-            id: question.id,
-            question: question_update_attributes
+            params: {
+              update_form_id: update_form.id,
+              id: question.id,
+              question: question_update_attributes
+            }
         question.reload
 
         expect(question.text).to eq "updated question"
@@ -45,9 +49,11 @@ RSpec.describe QuestionsController, type: :controller do
 
       before do
         put :update,
-            update_form_id: update_form.id,
-            id: question.id,
-            question: question_update_attributes
+            params: {
+              update_form_id: update_form.id,
+              id: question.id,
+              question: question_update_attributes
+            }
       end
 
       it "should not update question" do
