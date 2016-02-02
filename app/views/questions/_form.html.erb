@@ -2,7 +2,7 @@
 html: { class: 'edit_question form-inline' } do |f| %>
   <div class="form-group">
     <%= f.label :text, class: 'control-label' %>
-    <%= f.text_field :text, class: 'form-control', autocomplete: 'off' %>
+    <%= f.text_field :text, class: 'form-control', autocomplete: 'off', required: true %>
   </div>
   <%#= f.submit "<i class='fa fa-check'></i>".html_safe, class: 'btn btn-success' %>
   <button class="btn btn-success" type="submit">

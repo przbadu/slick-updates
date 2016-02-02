@@ -22,6 +22,16 @@ RSpec.describe QuestionsController, type: :controller do
 
       expect(response.content_type).to eq Mime[:js]
     end
+
+    it "should ask user to login" do
+      get :edit,
+          params: { update_form_id: update_form.id, id: question.id },
+          xhr: true
+
+      expect(response).to redirect_to(
+        "/auth/google?origin=%2Fquestions%2F#{update_form.id}%2Fedit%3Fupdate_form_id%3D#{question.id}"
+      )
+    end
   end
 
   describe "PUT update" do
