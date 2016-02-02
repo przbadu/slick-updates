@@ -24,7 +24,11 @@ class QuestionsController < ApplicationController
 
     if request.xhr?
       ActionCable.server.broadcast \
-        "update_form_update_#{@update_form.id}_questions", { html: render(@question) }
+        "update_form_#{@update_form.id}_questions", {
+          id: @question.id,
+          text: @question.text,
+          question_updated: true
+        }
 
       head :updated
     end

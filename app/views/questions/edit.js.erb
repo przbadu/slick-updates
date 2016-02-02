@@ -1,1 +1,2 @@
-$('#question_'+<%= @question.id %>).html("<%=j render 'form', question: @question %>")
+var parentEl = $('#question_'+<%= @question.id %>);
+parentEl.find('.question-text').html("<%=j render 'form', question: @question %>")

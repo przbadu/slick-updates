@@ -15,3 +15,9 @@ $ ->
       $(a).data('position') - $(b).data('position')
 
     $(this).append($li_elements)
+
+$(document).on 'click', '#cancel-update', (e)->
+  e.preventDefault()
+  id      = $(this).data('id')
+  old_txt = $(this).data('old-text')
+  $("#question_#{id}").find('.question-text').html(old_txt)
